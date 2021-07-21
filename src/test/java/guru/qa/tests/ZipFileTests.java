@@ -6,10 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static guru.qa.utils.Files.readTextFromPath;
-import static guru.qa.utils.Zip.unzip;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
 import static guru.qa.utils.Files.readTextFromPath;
 import static guru.qa.utils.Zip.unzip;
 
@@ -18,10 +16,10 @@ public class ZipFileTests {
     void zipWithPasswordTest() throws IOException, ZipException {
         String zipFilePath = "./src/test/resources/files/1.zip";
         String unzipFolderPath = "./src/test/resources/files/unzip";
+        String password = "123";
         String unzipTxtFilePath = "./src/test/resources/files/unzip/1.txt";
         String expectedData = "Lorem ipsum dolor sit amet, consectetur adipiscing";
-
-        unzip(zipFilePath, unzipFolderPath);
+        unzip(zipFilePath, unzipFolderPath, password);
 
         String actualData = readTextFromPath(unzipTxtFilePath);
 
@@ -34,8 +32,9 @@ public class ZipFileTests {
         String unzipFolderPath = "./src/test/resources/files/unzip";
         String unzipTxtFilePath = "./src/test/resources/files/unzip/1.txt";
         String expectedData = "Lorem ipsum dolor sit amet, consectetur adipiscing";
+        String password = "123";
 
-        unzip(zipFilePath, unzipFolderPath);
+        unzip(zipFilePath, unzipFolderPath, password);
 
         String actualData = readTextFromPath(unzipTxtFilePath);
 
